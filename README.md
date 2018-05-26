@@ -45,7 +45,7 @@ Step 7 - Finally, examine the certificate:
 openssl x509 -in certificate.pem -text -noout
 ```
 
-Step 8 - Move certificate .crt
+Step 8 - Copy certificate .crt
 
 ```bash
 cp docker.d2d.com.br.crt  /usr/local/share/ca-certificates
@@ -54,6 +54,22 @@ update-ca-certificates
 
 ### UP Container
 
+Step 1 - Create file registry.password
+
+```bash
+cd nginx/
+htpasswd -c registry.password user
+```
+Step 2 - docker-compose up
 ```bash
 docker-compose up -d
 ```
+
+Step 3 - docker login
+
+```bash
+docker login docker.d2d.com.br
+user: user
+pass: ****
+```
+
